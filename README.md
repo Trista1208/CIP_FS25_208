@@ -20,8 +20,8 @@ This project is a web scraper designed to extract Vacumm robots on the market's 
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/LukasDDg/CIP_FS25_208.git
+   cd <repository-directory(may differs)>
    ```
 
 2. Install the required libraries:
