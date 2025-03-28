@@ -1,0 +1,7 @@
+nbstripout
+selenium
+bs4
+lxml
+pandas
+tqdm
+ipywidgets
