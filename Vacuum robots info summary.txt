@@ -1,0 +1,84 @@
+VACUUM ROBOTS INFORMATION SUMMARY
+========================================
+
+1. GENERAL OVERVIEW
+--------------------
+Total number of robot models analyzed: 468
+Number of unique manufacturers: 91
+Top 5 manufacturers by number of models:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+2. PRICE ANALYSIS
+--------------------
+Price range: $100.00 - $2990.00
+Average price: $551.41
+Median price: $405.85
+
+Price Categories:
+  - Mid-range ($200-$500): 247 models (52.8%)
+  - Premium ($500-$1000): 124 models (26.5%)
+  - Budget (< $200): 55 models (11.8%)
+  - Luxury (> $1000): 42 models (9.0%)
+
+3. BATTERY AND PERFORMANCE
+--------------------
+Battery Capacity Range: 1200 - 8000 mAh
+Average Battery Life: 169 minutes
+Average Charging Time: 357 minutes
+Suction Power Range: 10 - 43000 Pa
+
+4. FEATURES ANALYSIS
+--------------------
+Most Common Features:
+  - Base station: 116 models (24.8%)
+  - Obstacle detector: 116 models (24.8%)
+  - Programmable room boundary: 108 models (23.1%)
+  - Laser navigation: 91 models (19.4%)
+  - Staircase safe: 78 models (16.7%)
+  - Programmable cleaning schedules: 50 models (10.7%)
+  - Camera function: 49 models (10.5%)
+  - Carpet detection: 40 models (8.5%)
+  - Automatic dust emptying: 32 models (6.8%)
+  - Infrared sensor: 26 models (5.6%)
+
+5. SMART HOME INTEGRATION
+--------------------
+Supported Smart Home Ecosystems:
+  - Amazon Alexa: 292 models (62.4%)
+  - Google Assistant: 252 models (53.8%)
+  - Apple Siri: 69 models (14.7%)
+  - Google Home: 26 models (5.6%)
+  - IFTTT: 26 models (5.6%)
+  - Swisscom HOME App: 21 models (4.5%)
+  - Matter: 5 models (1.1%)
+  - Apple Home: 3 models (0.6%)
+  - Tuya: 3 models (0.6%)
+  - Samsung Bixby: 2 models (0.4%)
+
+6. SURFACE COMPATIBILITY
+--------------------
+Compatible Surfaces:
+  - Carpet: 258 models (55.1%)
+  - Hard floor: 173 models (37.0%)
+  - Tiles: 169 models (36.1%)
+  - Parquet flooring: 139 models (29.7%)
+  - Laminate: 129 models (27.6%)
+  - Wood: 47 models (10.0%)
+  - Linoleum: 46 models (9.8%)
+  - Stone: 41 models (8.8%)
+  - Universal: 27 models (5.8%)
+  - Pad: 6 models (1.3%)
+
+7. CUSTOMER SATISFACTION
+--------------------
+Average Rating: 4.17 out of 5
+
+Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
