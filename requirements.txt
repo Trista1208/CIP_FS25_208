@@ -1,5 +1,7 @@
 nbstripout
 selenium
+setuptools==65.5.0
+undetected_chromedriver
 bs4
 lxml
 pandas
