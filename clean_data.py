@@ -330,7 +330,7 @@ def clean_data(input_file='robot_vacuums.csv', output_file='robot_vacuums_cleane
         # Print some statistics about the cleaned data
         print("\nData Statistics:")
         print(f"Number of unique manufacturers: {df_to_save['manufacturer'].nunique()}")
-        print(f"Price range: ${df_to_save['price'].min():.2f} - ${df_to_save['price'].max():.2f}")
+        print(f"Price range: CHF{df_to_save['price'].min():.2f} - CHF{df_to_save['price'].max():.2f}")
         print(f"Average rating: {df_to_save['rating'].mean():.2f}")
         print(f"Average battery life: {df_to_save['battery_life'].mean():.0f} minutes")
         print(f"Most common colours: {df_to_save['color'].value_counts().head(3).to_dict()}")
@@ -374,12 +374,12 @@ def generate_report(df_cleaned, output_file='Vacuum robots info summary.txt', ve
     # Price Analysis
     report.append("2. PRICE ANALYSIS")
     report.append("-" * 20)
-    report.append(f"Price range: ${df_cleaned['price'].min():.2f} - ${df_cleaned['price'].max():.2f}")
-    report.append(f"Average price: ${df_cleaned['price'].mean():.2f}")
-    report.append(f"Median price: ${df_cleaned['price'].median():.2f}")
+    report.append(f"Price range: CHF{df_cleaned['price'].min():.2f} - CHF{df_cleaned['price'].max():.2f}")
+    report.append(f"Average price: CHF{df_cleaned['price'].mean():.2f}")
+    report.append(f"Median price: CHF{df_cleaned['price'].median():.2f}")
     report.append("\nPrice Categories:")
     price_bins = [0, 200, 500, 1000, float('inf')]
-    price_labels = ['Budget (< $200)', 'Mid-range ($200-$500)', 'Premium ($500-$1000)', 'Luxury (> $1000)']
+    price_labels = ['Budget (< CHF200)', 'Mid-range (CHF200- CHF500)', 'Premium (CHF500-CHF1000)', 'Luxury (> CHF1000)']
     df_cleaned['price_category'] = pd.cut(df_cleaned['price'], bins=price_bins, labels=price_labels)
     price_dist = df_cleaned['price_category'].value_counts()
     for category, count in price_dist.items():
