@@ -8,3 +8,5 @@ pandas
 tqdm
 ipywidgets
 statsmodels
+matplotlib
+seaborn

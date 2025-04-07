@@ -474,4 +474,103 @@ def run_eda_analysis(input_file='robot_vacuums_cleaned.csv', plots_dir='plots',
 
 # If this script is run directly, perform the full analysis
 if __name__ == "__main__":
-    run_eda_analysis() 
+    run_eda_analysis()
+
+
+
+
+
+
+# function to run the different variants
+def print_section(title):
+    """Print a section title with separators for better readability"""
+    print("\n" + "="*80)
+    print(f" {title} ".center(78, "="))
+    print("="*80 + "\n")
+
+
+def eda_default_execution(input_df = 'robot_vacuums_cleaned.csv'):
+    """
+    This part of the script used Vacuum_EDA.py to plot some selected plots
+    This script shows three different ways to use the Vacuum_EDA module:
+    1. Default execution - Running the full EDA pipeline with default parameters
+    """
+    if not os.path.exists(input_df):
+        print(f"Error: {input_df} not found. Please run clean_data.py first.")
+        sys.exit(1)
+
+    # EXAMPLE 1: Default execution - simplest way to run the full analysis
+    print_section("EXAMPLE 1: Default Execution")
+    print("Running the complete EDA analysis with default parameters...\n")
+    print("This will:")
+    print(" - Use 'robot_vacuums_cleaned.csv' as input")
+    print(" - Save plots to the 'plots' directory")
+    print(" - Append EDA results to 'Vacuum robots info summary.txt'")
+    print("\nExecuting...\n")
+    
+    # Default execution
+    run_eda_analysis()
+
+
+def eda_custom_execution(input_df = 'robot_vacuums_cleaned.csv', custom_plots_dir = 'custom_plots', custom_report = 'Custom_EDA_Report.txt'):
+    """
+    This part of the script used Vacuum_EDA.py to plot some selected plots
+    This script shows three different ways to use the Vacuum_EDA module:
+    2. Custom execution - Specifying custom input, output files and plots directory
+    """
+    if not os.path.exists(input_df):
+        print(f"Error: {input_df} not found. Please run clean_data.py first.")
+        sys.exit(1)
+
+    # EXAMPLE 2: Custom execution - specifying parameters
+    print_section("EXAMPLE 2: Custom Execution")
+    print("Running the EDA analysis with custom parameters...\n")
+    
+    # Create a custom plots directory
+    print(f"This will:")
+    print(f" - Use '{input_df}' as input")
+    print(f" - Save plots to the '{custom_plots_dir}' directory")
+    print(f" - Save report to '{custom_report}'")
+    print("\nExecuting...\n")
+    
+    # Custom execution
+    run_eda_analysis(
+        input_file=input_df,
+        plots_dir=custom_plots_dir,
+        report_file=custom_report)
+    
+    
+def eda_selective_execution(input_file = 'robot_vacuums_cleaned.csv', selective_plots_dir = 'selective_plots'):
+    """
+    This part of the script used Vacuum_EDA.py to plot some selected plots
+    This script shows three different ways to use the Vacuum_EDA module:
+    3. Selective execution - Running only specific analysis functions
+    """
+    if not os.path.exists(input_file):
+        print(f"Error: {input_file} not found. Please run clean_data.py first.")
+        sys.exit(1)
+    
+    # EXAMPLE 3: Selective execution - running only specific analyses
+    print_section("EXAMPLE 3: Selective Execution")
+    print("Running only selected analysis functions...\n")
+    
+    if not os.path.exists(selective_plots_dir):
+        os.makedirs(selective_plots_dir)
+    
+    # Load and prepare data
+    print("Loading and preparing data...")
+    df = pd.read_csv(input_file)
+    df_enriched = add_derived_columns(df)
+    
+    # Run selected analyses
+    print("Generating selected plots:")
+    print(" - Price distribution")
+    plot_price_distribution(df_enriched, save_dir=selective_plots_dir)
+    
+    print(" - Country distribution")
+    plot_country_distribution(df_enriched, save_dir=selective_plots_dir)
+    
+    print(" - Battery capacity vs price")
+    plot_battery_vs_price(df_enriched, save_dir=selective_plots_dir)
+    
+    print(f"\nSelective plots have been saved to the '{selective_plots_dir}' directory.")
