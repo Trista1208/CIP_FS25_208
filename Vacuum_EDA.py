@@ -87,7 +87,7 @@ def add_derived_columns(df):
     
     return df
 
-def plot_price_distribution(df, save_dir='plots'):
+def plot_price_distribution(df, save_dir='plots', save_plot = True):
     """
     Create and save a histogram showing the distribution of vacuum prices.
     
@@ -106,10 +106,11 @@ def plot_price_distribution(df, save_dir='plots'):
     plt.axvline(df['price'].mean(), color='red', linestyle='--', label=f'Mean: CHF {df["price"].mean():.2f}')
     plt.axvline(df['price'].median(), color='green', linestyle='--', label=f'Median: CHF {df["price"].median():.2f}')
     plt.legend()
-    plt.savefig(f'{save_dir}/price_distribution.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/price_distribution.png')
     plt.close()
 
-def plot_price_category_pie(df, save_dir='plots'):
+def plot_price_category_pie(df, save_dir='plots', save_plot = True):
     """
     Create and save a pie chart showing the distribution of price categories.
     
@@ -125,12 +126,13 @@ def plot_price_category_pie(df, save_dir='plots'):
     plt.pie(price_dist, labels=price_dist.index, autopct='%1.1f%%', startangle=90)
     plt.title('Distribution of Robot Vacuums by Price Category')
     plt.axis('equal')
-    plt.savefig(f'{save_dir}/price_category_pie.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/price_category_pie.png')
     plt.close()
     
     return price_dist
 
-def plot_country_distribution(df, save_dir='plots'):
+def plot_country_distribution(df, save_dir='plots', save_plot = True):
     """
     Create and save a pie chart visualizing the country of origin distribution.
     
@@ -163,13 +165,13 @@ def plot_country_distribution(df, save_dir='plots'):
     plt.legend(labels, title="Countries", 
               loc="center left", 
               bbox_to_anchor=(1, 0, 0.5, 1))
-
-    plt.savefig(f'{save_dir}/country_distribution.png', bbox_inches='tight', dpi=300)
+    if save_plot:
+        plt.savefig(f'{save_dir}/country_distribution.png', bbox_inches='tight', dpi=300)
     plt.close()
     
     return country_dist
 
-def plot_battery_vs_price(df, save_dir='plots'):
+def plot_battery_vs_price(df, save_dir='plots', save_plot = True):
     """
     Create and save a scatter plot examining battery capacity vs price.
     
@@ -191,10 +193,11 @@ def plot_battery_vs_price(df, save_dir='plots'):
     p = np.poly1d(z)
     plt.plot(df_clean['battery_capacity'], p(df_clean['battery_capacity']), "r--", alpha=0.8, label='Trend Line')
     plt.legend()
-    plt.savefig(f'{save_dir}/battery_vs_price.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/battery_vs_price.png')
     plt.close()
 
-def plot_battery_life_by_price(df, save_dir='plots'):
+def plot_battery_life_by_price(df, save_dir='plots', save_plot = True):
     """
     Create and save a box plot showing battery life distribution by price category.
     
@@ -214,10 +217,11 @@ def plot_battery_life_by_price(df, save_dir='plots'):
     plt.grid(True, alpha=0.3)  # Add light grid
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig(f'{save_dir}/battery_life_by_price.png', bbox_inches='tight', dpi=300)
+    if save_plot:
+        plt.savefig(f'{save_dir}/battery_life_by_price.png', bbox_inches='tight', dpi=300)
     plt.close()
 
-def plot_price_battery_rating(df, save_dir='plots'):
+def plot_price_battery_rating(df, save_dir='plots', save_plot = True):
     """
     Create a scatter plot of price vs battery capacity colored by rating.
     
@@ -237,10 +241,11 @@ def plot_price_battery_rating(df, save_dir='plots'):
     plt.xlabel('Battery Capacity (mAh)')
     plt.ylabel('Price (CHF)')
     plt.tight_layout()
-    plt.savefig(f'{save_dir}/price_battery_rating.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/price_battery_rating.png')
     plt.close()
 
-def plot_avg_price_by_country(df, save_dir='plots'):
+def plot_avg_price_by_country(df, save_dir='plots', save_plot = True):
     """
     Create a bar plot showing the average price of vacuums by country of origin.
     
@@ -259,12 +264,13 @@ def plot_avg_price_by_country(df, save_dir='plots'):
     plt.ylabel('Average Price (CHF)')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig(f'{save_dir}/avg_price_by_country.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/avg_price_by_country.png')
     plt.close()
     
     return avg_price_by_country
 
-def plot_correlation_matrix(df, save_dir='plots'):
+def plot_correlation_matrix(df, save_dir='plots', save_plot = True):
     """
     Create a heatmap showing correlations between key vacuum metrics.
     
@@ -281,7 +287,8 @@ def plot_correlation_matrix(df, save_dir='plots'):
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
     plt.title('Correlation Matrix')
     plt.tight_layout()
-    plt.savefig(f'{save_dir}/correlation_matrix.png')
+    if save_plot:
+        plt.savefig(f'{save_dir}/correlation_matrix.png')
     plt.close()
     
     return correlation_matrix
@@ -406,7 +413,7 @@ def generate_detailed_summary(df, correlation_matrix, avg_price_by_country, rati
     
     return detailed_summary
 
-def save_detailed_summary(detailed_summary, output_file='Vacuum robots info summary.txt'):
+def save_detailed_summary(detailed_summary, output_file='Vacuum robots info summary.txt', save_plot=True):
     """
     Save the detailed analysis summary to a text file.
     
@@ -416,13 +423,14 @@ def save_detailed_summary(detailed_summary, output_file='Vacuum robots info summ
     You can specify the output file path; by default it saves to
     'Vacuum robots info summary.txt'.
     """
-    with open(output_file, 'a') as f:
-        f.write('\n'.join(detailed_summary))
+    if save_plot:
+        with open(output_file, 'a') as f:
+            f.write('\n'.join(detailed_summary))
     
     print("\nDetailed summary has been added to the report file.")
 
 def run_eda_analysis(input_file='robot_vacuums_cleaned.csv', plots_dir='plots', 
-                    report_file='Vacuum robots info summary.txt'):
+                    report_file='Vacuum robots info summary.txt', save_plot=True):
     """
     Run the complete EDA analysis pipeline in one go.
     
@@ -449,14 +457,14 @@ def run_eda_analysis(input_file='robot_vacuums_cleaned.csv', plots_dir='plots',
     df = add_derived_columns(df)
     
     # Generate all plots
-    plot_price_distribution(df, plots_dir)
-    price_dist = plot_price_category_pie(df, plots_dir)
-    country_dist = plot_country_distribution(df, plots_dir)
-    plot_battery_vs_price(df, plots_dir)
-    plot_battery_life_by_price(df, plots_dir)
-    plot_price_battery_rating(df, plots_dir)
-    avg_price_by_country = plot_avg_price_by_country(df, plots_dir)
-    correlation_matrix = plot_correlation_matrix(df, plots_dir)
+    plot_price_distribution(df, plots_dir, save_plot=save_plot)
+    price_dist = plot_price_category_pie(df, plots_dir, save_plot=save_plot)
+    country_dist = plot_country_distribution(df, plots_dir, save_plot=save_plot)
+    plot_battery_vs_price(df, plots_dir, save_plot=save_plot)
+    plot_battery_life_by_price(df, plots_dir, save_plot=save_plot)
+    plot_price_battery_rating(df, plots_dir, save_plot=save_plot)
+    avg_price_by_country = plot_avg_price_by_country(df, plots_dir, save_plot=save_plot)
+    correlation_matrix = plot_correlation_matrix(df, plots_dir, save_plot=save_plot)
     
     # Get rating distribution
     rating_dist = df['rating_category'].value_counts()
@@ -466,7 +474,7 @@ def run_eda_analysis(input_file='robot_vacuums_cleaned.csv', plots_dir='plots',
     
     # Generate and save detailed summary
     detailed_summary = generate_detailed_summary(df, correlation_matrix, avg_price_by_country, rating_dist)
-    save_detailed_summary(detailed_summary, report_file)
+    save_detailed_summary(detailed_summary, report_file, save_plot=save_plot)
     
     print("\nPlots have been saved in the 'plots' directory.")
     
@@ -489,7 +497,7 @@ def print_section(title):
     print("="*80 + "\n")
 
 
-def eda_default_execution(input_df = 'robot_vacuums_cleaned.csv'):
+def eda_default_execution(input_df = 'robot_vacuums_cleaned.csv', save_plot=True):
     """
     This part of the script used Vacuum_EDA.py to plot some selected plots
     This script shows three different ways to use the Vacuum_EDA module:
@@ -509,10 +517,10 @@ def eda_default_execution(input_df = 'robot_vacuums_cleaned.csv'):
     print("\nExecuting...\n")
     
     # Default execution
-    run_eda_analysis()
+    run_eda_analysis(save_plot=save_plot)
 
 
-def eda_custom_execution(input_df = 'robot_vacuums_cleaned.csv', custom_plots_dir = 'custom_plots', custom_report = 'Custom_EDA_Report.txt'):
+def eda_custom_execution(input_df = 'robot_vacuums_cleaned.csv', custom_plots_dir = 'custom_plots', custom_report = 'Custom_EDA_Report.txt', save_plot=True):
     """
     This part of the script used Vacuum_EDA.py to plot some selected plots
     This script shows three different ways to use the Vacuum_EDA module:
@@ -537,10 +545,11 @@ def eda_custom_execution(input_df = 'robot_vacuums_cleaned.csv', custom_plots_di
     run_eda_analysis(
         input_file=input_df,
         plots_dir=custom_plots_dir,
-        report_file=custom_report)
+        report_file=custom_report,
+        save_plot=save_plot)
     
     
-def eda_selective_execution(input_file = 'robot_vacuums_cleaned.csv', selective_plots_dir = 'selective_plots'):
+def eda_selective_execution(input_file = 'robot_vacuums_cleaned.csv', selective_plots_dir = 'selective_plots', save_plot=True):
     """
     This part of the script used Vacuum_EDA.py to plot some selected plots
     This script shows three different ways to use the Vacuum_EDA module:
@@ -565,12 +574,12 @@ def eda_selective_execution(input_file = 'robot_vacuums_cleaned.csv', selective_
     # Run selected analyses
     print("Generating selected plots:")
     print(" - Price distribution")
-    plot_price_distribution(df_enriched, save_dir=selective_plots_dir)
+    plot_price_distribution(df_enriched, save_dir=selective_plots_dir, save_plot=save_plot)
     
     print(" - Country distribution")
-    plot_country_distribution(df_enriched, save_dir=selective_plots_dir)
+    plot_country_distribution(df_enriched, save_dir=selective_plots_dir, save_plot=save_plot)
     
     print(" - Battery capacity vs price")
-    plot_battery_vs_price(df_enriched, save_dir=selective_plots_dir)
+    plot_battery_vs_price(df_enriched, save_dir=selective_plots_dir, save_plot=save_plot)
     
     print(f"\nSelective plots have been saved to the '{selective_plots_dir}' directory.")
