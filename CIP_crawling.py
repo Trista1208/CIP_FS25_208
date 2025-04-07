@@ -41,7 +41,7 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
 
     # scroll down for the lazy loaded items
     scroll_height = 0
-    scroll_step = 1000
+    scroll_step = 3000
     new_height = driver.execute_script("return document.body.scrollHeight")
 
     while True:
@@ -132,7 +132,7 @@ def crawl_for_product_data(urls,
     for i, url in tqdm(enumerate(urls), total=len(urls)):
         try:
             driver.get(url)
-            time.sleep(random.uniform(4, 6))
+            time.sleep(random.uniform(3, 4))
 
             soup = BeautifulSoup(driver.page_source, 'lxml')
             dom = etree.HTML(str(soup))
@@ -199,16 +199,26 @@ def crawl_for_product_data(urls,
 
             # here we did it only with soup
             # save everything in the tables (warning the 3idw3 after the __ can change and would need adjustment if it doesn't work anymore)
-            for table in soup.find_all(class_="specificationTable_styled_SpecificationTableStyled__3idw3"):
-                table_name = table.find("caption").get_text(strip=True) if table.find("caption") else "Unknown"
+            # for table in soup.find_all(class_="specificationTable_styled_SpecificationTableStyled__3idw3"):
+            # Use partial class matching for tables
+            for table in soup.find_all("table"):
+                # Optionally filter only those with captions you care about
+                caption_tag = table.find("caption")
+                if not caption_tag:
+                    continue
+                table_name = caption_tag.get_text(strip=True)
                 for row in table.find_all("tr"):
                     cells = row.find_all("td")
-                    if len(cells) == 2:
-                        key = cells[0].get_text(separator=" ", strip=True)
-                        values = cells[1].find_all("span", class_="value_StyledValue__KCmTz")
-                        value_texts = [v.get_text(" ", strip=True) for v in values]
-                        value = ", ".join(value_texts).replace("\xa0", " ")
-                        data.get(name).update({table_name + "  " + key : value})
+                    if len(cells) != 2:
+                        continue
+                    key = cells[0].get_text(separator=" ", strip=True)
+                    value_spans = cells[1].find_all("span")
+                    if not value_spans:
+                        value = cells[1].get_text(" ", strip=True)
+                    else:
+                        value = ", ".join([v.get_text(" ", strip=True) for v in value_spans])
+                    value = value.replace("\xa0", " ")
+                    data.get(name).update({table_name + "  " + key : value})
             driver.delete_all_cookies()
         except:
             # if something goes wrong / or the site couldn't be loadet out of some reason
