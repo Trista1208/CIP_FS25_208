@@ -40,14 +40,15 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
 
     # scroll down for the lazy loaded items
     scroll_height = 0
-    scroll_step = 2000
+    scroll_step = 1000
     new_height = driver.execute_script("return document.body.scrollHeight")
 
     while True:
         # scrolling
         driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height + scroll_step});")
-        time.sleep(random.uniform(0.2, 0.4))
+        time.sleep(random.uniform(0.5, 0.8))
         scroll_height += scroll_step
+        new_height = driver.execute_script("return document.body.scrollHeight")
 
         # if it gets to the bottom
         if new_height < scroll_height:
@@ -58,13 +59,12 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
                 )
                 # scroll to the right place to press the button
                 driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", show_more)
-                time.sleep(random.uniform(0.4, 0.8))
+                time.sleep(random.uniform(1, 2))
                 show_more.click()
                 print("Clicked button")
+                time.sleep(random.uniform(3, 4))
                 # in case the scrolling window gets bigger
                 old_height = new_height
-                new_height = driver.execute_script("return document.body.scrollHeight")
-                time.sleep(random.uniform(1.5, 2.5))
 
                 # savety against a inf loop
                 if old_height == new_height:
@@ -130,7 +130,7 @@ def crawl_for_product_data(urls):
     for i, url in tqdm(enumerate(urls), total=len(urls)):
         try:
             driver.get(url)
-            time.sleep(random.uniform(3, 7))
+            time.sleep(random.uniform(4, 6))
 
             soup = BeautifulSoup(driver.page_source, 'lxml')
             dom = etree.HTML(str(soup))
@@ -196,8 +196,8 @@ def crawl_for_product_data(urls):
             data.get(name).update({"rating_count" : rating_count_int})
 
             # here we did it only with soup
-            # save everything in the tables
-            for table in soup.find_all(class_="specificationTable_styled_SpecificationTableStyled__G_W91"):
+            # save everything in the tables (warning the 3idw3 after the __ can change and would need adjustment if it doesn't work anymore)
+            for table in soup.find_all(class_="specificationTable_styled_SpecificationTableStyled__3idw3"):
                 table_name = table.find("caption").get_text(strip=True) if table.find("caption") else "Unknown"
                 for row in table.find_all("tr"):
                     cells = row.find_all("td")

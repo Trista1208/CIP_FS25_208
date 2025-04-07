@@ -1,5 +1,6 @@
 import pandas as pd
 import statsmodels.formula.api as smf
+import numpy as np
 
 
 
@@ -92,7 +93,7 @@ def onehot_encoding(df, print_i = True):
     return df_onehot
 
 
-def price_efficiency(df, price_rel = 5, factor = 300, top = 10, print_sample = True):
+def price_efficiency(df, price_rel = 5, factor = 300, top = 10, quantile = 0.8, print_sample = True):
     """
     Calculates a price-efficiency score for each product and prints the top products per category.
 
@@ -104,6 +105,7 @@ def price_efficiency(df, price_rel = 5, factor = 300, top = 10, print_sample = T
         print_sample (bool): If True, prints sample sizes per robot type.
     """
     if print_sample:
+        print("Info to the types:")
         print(df["robot_type"].value_counts(), "\n")
 
     for ro_type in df["robot_type"].unique()[:3]:
@@ -112,7 +114,6 @@ def price_efficiency(df, price_rel = 5, factor = 300, top = 10, print_sample = T
         # make a quality score
 
         # get soome values important values at a quantile of 80%
-        quantile = 0.8
         battery_qual = (df_filtered["battery_life"] / df_filtered["battery_life"].quantile(quantile)).clip(upper=1)
         noise_qual = (df_filtered["noise_level"] / df_filtered["noise_level"].quantile(quantile)).clip(upper=1)
         suction_qual = (df_filtered["suction_power"] / df_filtered["suction_power"].quantile(quantile)).clip(upper=1)
@@ -123,13 +124,13 @@ def price_efficiency(df, price_rel = 5, factor = 300, top = 10, print_sample = T
 
         # 300 are just because many prices are about 1000.- and a score from 0 - 100 is better to read than a verry small number
         # price ** 1/5 is to reduce the price influence on the result. Most good products are still verry cheap
-        df_filtered["price_efficiency"] = df_filtered["quality_score"] / df_filtered["price"]**(1/5) * 300
+        df_filtered["price_efficiency"] = df_filtered["quality_score"] / df_filtered["price"]**(1/price_rel) * factor
 
-        print(f"for the {ro_type} the ranking is:")
+        print(f"For the '{ro_type}' the ranking is:")
         
         top10 = df_filtered.sort_values("price_efficiency", ascending=False).head(top)
         print(top10[["product_name", "price_efficiency", "price"]].round(2))
-        print("\n")
+        print("\n\n\n")
         
 
 def feature_rating(df_onehot):
@@ -156,8 +157,9 @@ def feature_rating(df_onehot):
     sorted_results = results_df.sort_values("p_value")
 
     # Anzeigen
-    print("top features with influence on the ratings with p < 0,1")
+    print("Top features with influence on the ratings with p < 0,1")
     print(sorted_results[sorted_results["p_value"] <= 0.1].round(3))
+    print("\n\n\n")
     
 
 def price_efficiency_features(df_onehot, print_i = True):
@@ -173,6 +175,7 @@ def price_efficiency_features(df_onehot, print_i = True):
     # ca 200 left
     df_price = df_onehot[df_onehot["rating_count"] >= 10]
     if print_i:
+        print("Info to the cleaning:")
         print("sample size before cleaning ", df_price.shape[0])
         print("price max ", df_price["price"].max())
         print("price mean ", df_price["price"].mean())
@@ -184,6 +187,7 @@ def price_efficiency_features(df_onehot, print_i = True):
         print("sample size after cleaning ", df_price.shape[0])
         print("price mean ", df_price["price"].mean())
         print("price median ", df_price["price"].median())
+        print("\n")
     
     # just all the features we analyse
     formula = (
@@ -208,9 +212,6 @@ def price_efficiency_features(df_onehot, print_i = True):
         "coef_rating": model_rating.params,
         "p_rating": model_rating.pvalues})
 
-    # Nach p-Wert sortieren
-    sorted_results = results_df.sort_values("p_value")
-
     # Combine and drop intercept
     results = results_price.join(results_rating, how="inner")
     results = results.drop(index="Intercept")
@@ -229,7 +230,5 @@ def price_efficiency_features(df_onehot, print_i = True):
     # Sort by combined_score
     results_sorted = results.sort_values("combined_score", ascending=False)
 
-    print("Top features by combined influence on price and rating:\n")
+    print("Top features by combined influence on price and rating:")
     print(results_sorted[["combined_score", "coef_price", "coef_rating"]][:10].round(3))
-    
-    return 
