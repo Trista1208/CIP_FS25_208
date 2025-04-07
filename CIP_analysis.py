@@ -169,32 +169,67 @@ def price_efficiency_features(df_onehot, print_i = True):
         df_onehot (pandas.DataFrame): One-hot encoded DataFrame with features and price.
         print_i (bool): If True, prints basic statistics and sample size before and after filtering.
     """
+    
+    # ca 200 left
+    df_price = df_onehot[df_onehot["rating_count"] >= 10]
     if print_i:
-        # ca 200 left
-        df_price = df_onehot[df_onehot["rating_count"] >= 10]
         print("sample size before cleaning ", df_price.shape[0])
         print("price max ", df_price["price"].max())
         print("price mean ", df_price["price"].mean())
         print("price median ", df_price["price"].median())
 
-        # there are some realy high price products, they are eliminated
-        df_price = df_price[df_price["price"] <= 2000]
+    # there are some realy high price products, they are eliminated
+    df_price = df_price[df_price["price"] <= 2000]
+    if print_i:
         print("sample size after cleaning ", df_price.shape[0])
         print("price mean ", df_price["price"].mean())
         print("price median ", df_price["price"].median())
+    
+    # just all the features we analyse
+    formula = (
+    "battery_life + noise_level + suction_power + room_area + "
+    "Area_cleaning + Automatic_detergent_addition + Automatic_dust_emptying + "
+    "Automatic_mop_pad_separation + Automatic_power_adjustment + Automatic_water_refill + "
+    "Automatic_water_regulation + Base_station + Camera_function + Camera_based_navigation + "
+    "Carpet_detection + Configurable_cleaning_programmes + Extendable_side_brushes + "
+    "Extendable_wiping_pads + Fixed_water_connection + Independent_emptying + "
+    "Infrared_sensor + Laser_navigation + Obstacle_detector + Programmable_cleaning_schedules + "
+    "Programmable_room_boundary + Removable_water_tank + Self_cleaning_mop_pads + Staircase_safe")
 
-    model = smf.ols(formula="price ~ battery_life + noise_level + suction_power + room_area + Area_cleaning + Automatic_detergent_addition + Automatic_dust_emptying + Automatic_mop_pad_separation + Automatic_power_adjustment + Automatic_water_refill + Automatic_water_regulation + Base_station + Camera_function + Camera_based_navigation + Carpet_detection + Configurable_cleaning_programmes + Extendable_side_brushes + Extendable_wiping_pads + Fixed_water_connection + Independent_emptying + Infrared_sensor + Laser_navigation + Obstacle_detector + Programmable_cleaning_schedules + Programmable_room_boundary + Removable_water_tank + Self_cleaning_mop_pads + Staircase_safe", data=df_price).fit()
-    # Ergebnisse extrahieren
-    results_df = pd.DataFrame({
-        "coef": model.params,
-        "std_err": model.bse,
-        "t": model.tvalues,
-        "p_value": model.pvalues
-    })
+    # PRICE MODEL
+    model_price = smf.ols(formula=f"price ~ {formula}", data=df_price).fit()
+    results_price = pd.DataFrame({
+        "coef_price": model_price.params,
+        "p_price": model_price.pvalues})
+
+    # RATING MODEL
+    model_rating = smf.ols(formula=f"rating ~ {formula}", data=df_price).fit()
+    results_rating = pd.DataFrame({
+        "coef_rating": model_rating.params,
+        "p_rating": model_rating.pvalues})
 
     # Nach p-Wert sortieren
     sorted_results = results_df.sort_values("p_value")
 
-    # Anzeigen
-    print("top features with influence on the pricing with p < 0,1")
-    print(sorted_results[sorted_results["p_value"] <= 0.1].round(3))
+    # Combine and drop intercept
+    results = results_price.join(results_rating, how="inner")
+    results = results.drop(index="Intercept")
+
+    # Compute scores
+    results["score_price"] = - results["coef_price"] * -np.log10(results["p_price"])
+    results["score_rating"] = results["coef_rating"] * -np.log10(results["p_rating"])
+
+    # Normalize scores between 0 and 1
+    results["score_price_norm"] = (results["score_price"] - results["score_price"].min()) / (results["score_price"].max() - results["score_price"].min())
+    results["score_rating_norm"] = (results["score_rating"] - results["score_rating"].min()) / (results["score_rating"].max() - results["score_rating"].min())
+
+    # Combined score (average)
+    results["combined_score"] = (results["score_price_norm"] + results["score_rating_norm"]) / 2
+
+    # Sort by combined_score
+    results_sorted = results.sort_values("combined_score", ascending=False)
+
+    print("Top features by combined influence on price and rating:\n")
+    print(results_sorted[["combined_score", "coef_price", "coef_rating"]][:10].round(3))
+    
+    return 
