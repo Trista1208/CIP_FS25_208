@@ -13,7 +13,8 @@ from tqdm.notebook import tqdm
 import pandas as pd
 
 
-def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum-cleaners-174?take=204", print_i = True):
+def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum-cleaners-174?take=204", print_i = True,
+                    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"):
     """
     Opens a Galaxus product search link and iterates through all products,
     scraping the individual product URLs.
@@ -28,7 +29,7 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
     # Start "undetectable" Chrome
     options = uc.ChromeOptions()
     options.add_argument("--no-first-run --no-service-autorun --password-store=basic")
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+    options.add_argument(f"user-agent={user_agent}")
 
     # to make shure we don't get detected as a bot
     driver = uc.Chrome(options=options, headless=False)
@@ -99,7 +100,8 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
     
     
 
-def crawl_for_product_data(urls):
+def crawl_for_product_data(urls,
+                           user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"):
     """
     Uses a list of Galaxus product URLs and scrapes each product page individually.
     For every product, the following information is extracted:
@@ -119,7 +121,7 @@ def crawl_for_product_data(urls):
     # Start "undetectable" Chrome
     options = uc.ChromeOptions()
     options.add_argument("--no-first-run --no-service-autorun --password-store=basic")
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+    options.add_argument(f"user-agent={user_agent}")
 
     # to make shure we don't get detected as a bot
     driver = uc.Chrome(options=options, headless=False)
