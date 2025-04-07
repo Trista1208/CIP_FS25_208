@@ -1,0 +1,541 @@
+
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
+
+DETAILED ANALYSIS SUMMARY
+========================================
+
+1. Market Overview and Price Analysis
+-----------------------------------
+• The robot vacuum market shows significant price diversity:
+  - Price range spans from CHF 100.00 to CHF 2990.00
+  - Average price: CHF 551.41
+  - Median price: CHF 405.85
+
+• Price Category Breakdown:
+  - Mid-range (CHF 200-500): 247 models (52.8%)
+  - Premium (CHF 500-1000): 124 models (26.5%)
+  - Budget (< CHF 200): 55 models (11.8%)
+  - Luxury (> CHF 1000): 42 models (9.0%)
+
+2. Manufacturer Analysis
+-----------------------------------
+• Total number of manufacturers: 91
+
+• Top 5 Manufacturers by Market Share:
+  - Roborock: 44 models
+  - iRobot: 38 models
+  - Ecovacs: 35 models
+  - Xiaomi: 31 models
+  - Dreame: 29 models
+
+• Country of Origin Distribution:
+  - Other: 270 models (57.7%)
+  - China: 139 models (29.7%)
+  - USA: 41 models (8.8%)
+  - Netherlands: 11 models (2.4%)
+  - South Korea: 5 models (1.1%)
+  - Germany: 2 models (0.4%)
+
+• Price Leadership by Country:
+  - South Korea: 1037.21 CHF average
+  - China: 667.53 CHF average
+  - Germany: 528.50 CHF average
+  - Other: 496.72 CHF average
+  - USA: 487.98 CHF average
+  - Netherlands: 446.54 CHF average
+
+3. Technical Specifications
+-----------------------------------
+• Battery Performance:
+  - Capacity Range: 1200 - 8000 mAh
+  - Average Capacity: 4038 mAh
+  - Average Battery Life: 169 minutes
+  - Average Charging Time: 357 minutes
+
+• Suction Power:
+  - Range: 10 - 43000 Pa
+  - Average: 5580 Pa
+
+4. Customer Satisfaction
+-----------------------------------
+• Overall Rating Statistics:
+  - Average Rating: 4.17 out of 5
+  - Median Rating: 4.50
+
+• Rating Distribution:
+  - Excellent (4.5-5): 102 models (21.8%)
+  - Very Good (4-4.5): 79 models (16.9%)
+  - Good (3-4): 39 models (8.3%)
+  - Below Average (< 3): 29 models (6.2%)
+
+5. Key Correlations
+-----------------------------------
+• Price Correlations:
+  - Price vs Battery Capacity: 0.170
+  - Price vs Battery Life: -0.004
+  - Price vs Rating: -0.062
+
+6. Market Insights
+-----------------------------------
+• The mid-range segment dominates the market, suggesting strong competition in this price range
+• Chinese manufacturers have a significant market presence, particularly in the mid-range segment
+• South Korean brands command the highest average prices, suggesting premium positioning
+• Battery capacity shows a positive correlation with price, indicating it's a key factor in pricing
+• Mid-range (CHF 200-500) is the most common price category, representing 52.8% of the market
+
+7. Recommendations for Consumers
+-----------------------------------
+• Best value for money might be found in the mid-range segment (CHF 200-500)
+• Higher prices generally correlate with better battery performance
+• Consider Chinese brands for competitive pricing with good features
+• Premium features are most commonly found in South Korean and high-end Chinese models
+• Battery life and capacity should be key considerations in purchase decisions
