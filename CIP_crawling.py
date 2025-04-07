@@ -63,8 +63,8 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
                 show_more.click()
                 print("Clicked button")
                 time.sleep(random.uniform(0.5, 1))
-                scroll_height -= 18000
-                driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height - 16000});")
+                scroll_height -= 8000
+                driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height - 8000});")
             except:
                 # normal out
                 print("No more buttons found.")
