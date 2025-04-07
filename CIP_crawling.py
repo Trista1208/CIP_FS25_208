@@ -37,20 +37,19 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
     driver.get(url)
 
     # Warte auf erste Seite
-    time.sleep(random.uniform(5, 7))
+    time.sleep(random.uniform(2, 3))
 
     # scroll down for the lazy loaded items
     scroll_height = 0
-    scroll_step = 3000
+    scroll_step = 2000
     new_height = driver.execute_script("return document.body.scrollHeight")
 
     while True:
         # scrolling
         driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height + scroll_step});")
-        time.sleep(random.uniform(0.5, 0.8))
+        time.sleep(random.uniform(0.2, 0.4))
         scroll_height += scroll_step
         new_height = driver.execute_script("return document.body.scrollHeight")
-
         # if it gets to the bottom
         if new_height < scroll_height:
             try:
@@ -63,15 +62,9 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
                 time.sleep(random.uniform(1, 2))
                 show_more.click()
                 print("Clicked button")
-                time.sleep(random.uniform(3, 4))
-                # in case the scrolling window gets bigger
-                old_height = new_height
-
-                # savety against a inf loop
-                if old_height == new_height:
-                    # this happens if you are detected as a bot
-                    print("Button clicked but nothing changed.")
-                    break
+                time.sleep(random.uniform(0.5, 1))
+                scroll_height -= 18000
+                driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height - 16000});")
             except:
                 # normal out
                 print("No more buttons found.")
