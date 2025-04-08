@@ -1,4 +1,4 @@
-# all imports. use "pip install -r requirements.txt" ^^ if you don't have the needed librarys installed
+# All imports. Use "pip install -r requirements.txt" if the required libraries are not installed.
 import undetected_chromedriver as uc
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,7 +17,7 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
                     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"):
     """
     Opens a Galaxus product search link and iterates through all products,
-    scraping the individual product URLs.
+    scraping their individual product URLs.
 
     Parameters:
         url (str): URL of the product search page on galaxus.ch
@@ -31,60 +31,61 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
     options.add_argument("--no-first-run --no-service-autorun --password-store=basic")
     options.add_argument(f"user-agent={user_agent}")
 
-    # to make shure we don't get detected as a bot
+    # To ensure we aren't detected as a bot
     driver = uc.Chrome(options=options, headless=False)
 
     driver.get(url)
 
-    # Warte auf erste Seite
+    # Wait for the first page to load
     time.sleep(random.uniform(2, 3))
 
-    # scroll down for the lazy loaded items
+    # Scroll down to load lazy-loaded items
     scroll_height = 0
     scroll_step = 2000
     new_height = driver.execute_script("return document.body.scrollHeight")
 
     while True:
-        # scrolling
+        # Perform scrolling
         driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height + scroll_step});")
         time.sleep(random.uniform(0.2, 0.4))
         scroll_height += scroll_step
         new_height = driver.execute_script("return document.body.scrollHeight")
-        # if it gets to the bottom
+        # If we reach the bottom
         if new_height < scroll_height:
             try:
-                # choose the button to click
+                # Select the button to click
                 show_more = WebDriverWait(driver, 3).until(
                     EC.element_to_be_clickable((By.XPATH, '//button[contains(@class, "productListFooter_styled_StyledLoadMoreButton")]'))
                 )
-                # scroll to the right place to press the button
+                # Scroll to the correct position to click the button
                 driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", show_more)
                 time.sleep(random.uniform(1, 2))
                 show_more.click()
                 print("Clicked button")
                 time.sleep(random.uniform(0.5, 1))
+                # Scroll back up to continue the process
                 scroll_height -= 8000
                 driver.execute_script(f"window.scrollTo({scroll_height}, {scroll_height - 8000});")
             except:
-                # normal out
+                # Exit the loop normally
                 print("No more buttons found.")
                 break
 
-    # save the HTML to search it
+    # Save the HTML source for parsing
     soup = BeautifulSoup(driver.page_source, 'lxml')
     urls = []
 
-    # put all links in a list
+    # Collect all product links into a list
     for a in soup.find_all("a", href=True):
         href = a["href"]
-        # only products
+        # Only include product links
         if href.startswith("/en/s2/product/"):
             full_url = "https://www.galaxus.ch" + href
             if full_url not in urls:
                 urls.append(full_url)
 
     if print_i:
-        # for testing
+        # For testing: print a few product URLs
         print(f"\nFound {len(urls)} product URLs.")
         for u in urls[:5]: print(u)
 
@@ -96,8 +97,8 @@ def crawl_for_links(url = "https://www.galaxus.ch/en/s2/producttype/robot-vacuum
 def crawl_for_product_data(urls,
                            user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"):
     """
-    Uses a list of Galaxus product URLs and scrapes each product page individually.
-    For every product, the following information is extracted:
+    Takes a list of Galaxus product URLs and scrapes each product page individually.
+    For each product, the following information is extracted:
     - Name
     - Price
     - Rating
@@ -116,10 +117,10 @@ def crawl_for_product_data(urls,
     options.add_argument("--no-first-run --no-service-autorun --password-store=basic")
     options.add_argument(f"user-agent={user_agent}")
 
-    # to make shure we don't get detected as a bot
+    # To ensure we aren't detected as a bot
     driver = uc.Chrome(options=options, headless=False)
 
-    #just for testing
+    # Test URLs (optional)
     # urls = ["https://www.galaxus.ch/en/s2/product/roborock-s8-maxv-ultra-vacuum-mopping-robot-robot-vacuum-cleaners-43695849", "https://www.galaxus.ch/en/s2/product/dreame-x50-ultra-complete-vacuum-mopping-robot-robot-vacuum-cleaners-53898301"]
 
     for i, url in tqdm(enumerate(urls), total=len(urls)):
@@ -130,9 +131,9 @@ def crawl_for_product_data(urls,
             soup = BeautifulSoup(driver.page_source, 'lxml')
             dom = etree.HTML(str(soup))
 
-            # here we tryed to do things with the XPATH. Mabe it would have been better with only soup, because there are a lot of trys.
-            # but we tought that the base product things are always on the same place (which was wrong)
-            # extracting the name
+            # Here we tried using XPath. Maybe it would have been better to stick with BeautifulSoup,
+            # because we ended up handling many exceptions.
+            # We assumed base product info would always be in the same place—which turned out to be incorrect.
 
             name_element = dom.xpath('//*[@id="pageContent"]/div/div[1]/div/div/div[2]/div/div[1]/div/h1')
             name = name_element[0].xpath("string()")
@@ -144,7 +145,7 @@ def crawl_for_product_data(urls,
                 price_element = dom.xpath('//*[@id="pageContent"]/div/div[1]/div/div/div[2]/div/div[1]/span/strong/button/text()')
                 price_float = float(re.sub(r"[^\d]", "", price_element[0]))
             except:
-                # can happen if the product is returned
+                # This block handles cases where the product is a returned item
                 price_element = dom.xpath('//*[@id="pageContent"]/div/div[1]/div[1]/div/div[2]/div/div[1]/span/strong/text()')
                 price_float = float(re.sub(r"[^\d]", "", price_element[0]))
             
@@ -152,8 +153,8 @@ def crawl_for_product_data(urls,
             if data.get(str(name)) is None:
                 data[str(name)] = dict()
             else:
-                # if theoretical only the color changes, we just overwrite the old datapoint. But they would be simmilar anyway
-                # rename the old one
+                # If only the color changes, we overwrite the previous entry since the data is similar.
+                # We rename the old entry to preserve both.
                 data[name + "_" + str(data.get(name).get("price"))] = data.get(name)
                 data.pop(name)
                 # create the new one
@@ -168,11 +169,11 @@ def crawl_for_product_data(urls,
                 rating_float = float(rating_element[0].get("aria-label").split()[0])
             except:
                 try:
-                    # only a small change, I thing it happens when there is an additional price reduction window
+                    # Just a small variation—likely when there's an additional price reduction window
                     rating_element = dom.xpath('//*[@id="pageContent"]/div/div[1]/div/div/div[2]/div/div[3]/div[1]/a/span[3]')
                     rating_float = float(rating_element[0].get("aria-label").split()[0])
                 except:
-                    # happens if there is no rating
+                    # Happens if there is no rating available
                     rating_float = None
             data.get(name).update({"rating" : rating_float})
 
@@ -190,9 +191,7 @@ def crawl_for_product_data(urls,
                     rating_float = None
             data.get(name).update({"rating_count" : rating_count_int})
 
-            # here we did it only with soup
-            # save everything in the tables (warning the 3idw3 after the __ can change and would need adjustment if it doesn't work anymore)
-            # for table in soup.find_all(class_="specificationTable_styled_SpecificationTableStyled__3idw3"):
+            # Here we used only BeautifulSoup
             # Use partial class matching for tables
             for table in soup.find_all("table"):
                 # Optionally filter only those with captions you care about
@@ -212,10 +211,11 @@ def crawl_for_product_data(urls,
                         value = ", ".join([v.get_text(" ", strip=True) for v in value_spans])
                     value = value.replace("\xa0", " ")
                     data.get(name).update({table_name + "  " + key : value})
+            # Clear cookies after each iteration
             driver.delete_all_cookies()
         except:
-            # if something goes wrong / or the site couldn't be loadet out of some reason
-            # not the nicest way, but the last run didn't print any problems anyway
+            # If something goes wrong or the site couldn't load for some reason
+            # Not the cleanest way to handle it, but the last run didn’t report any issues
             print(f"There was a Problem with: {i} {url}")
             pass
 
@@ -230,16 +230,17 @@ def data_to_csv(data, save = True):
     and saves the DataFrame as a .csv file.
 
     Parameters:
-        data_dict (dict): A dictionary containing the scraped data for each product
+        data (dict): A dictionary containing the scraped data for each product
+        save (bool): If True, saves the DataFrame as a CSV file
 
     Returns:
         pandas.DataFrame: The resulting DataFrame created from the dictionary
     """
-    # change the dict to DataFrame and put the name in a new line
+    # Convert the dictionary to a DataFrame and move the product name into a column
     df = pd.DataFrame.from_dict(data, orient='index')
     df = df.reset_index().rename(columns={"index": "product_name"})
     print(df.shape)
-    # save as csv
+    # Save as a CSV file
     if save:
         df.to_csv("robot_vacuums.csv", index=False)
     return df
