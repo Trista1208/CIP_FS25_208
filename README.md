@@ -28,22 +28,22 @@ This project consists of four main components:
 - `selective_plots/`: Directory for selective visualizations
 
 ## Execution Process
-
-### Option 1: Using the Jupyter Notebook (Recommended)
 The `execution.ipynb` notebook provides a step-by-step guide through the entire process:
 
 1. **Data Crawling**
    ```python
    from CIP_crawling import crawl_for_links, crawl_for_product_data, data_to_csv
-   
    # Get product URLs from the search results page
-   urls = crawl_for_links(url="https://www.galaxus.ch/en/s2/producttype/robot-vacuum-cleaners-174?take=204")
-   
+   urls = crawl_for_links(url="https://www.galaxus.ch/en/s2/producttype/robot-vacuum-cleaners-174?take=100",
+                        user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+
    # Scrape all product data and store it in a dictionary
-   data = crawl_for_product_data(urls[:5])  # Use [:5] for testing, remove for full dataset
-   
+   # [:5] is for testing only. Scraping one product takes approximately 4 seconds, so scraping around 500 products takes about 40 minutes.
+   data = crawl_for_product_data(urls[:5],
+                                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+
    # Save the data to a .csv file
-   data_to_csv(data, save=True)
+   data_to_csv(data, save=False)
    ```
 
 2. **Data Cleaning**
@@ -62,14 +62,17 @@ The `execution.ipynb` notebook provides a step-by-step guide through the entire 
    ```python
    from Vacuum_EDA import eda_default_execution, eda_custom_execution, eda_selective_execution
    
-   # Running the full EDA pipeline with default parameters
-   eda_default_execution(input_df='robot_vacuums_cleaned.csv')
-   
-   # Specifying custom input, output files and plots directory
-   eda_custom_execution(input_df='robot_vacuums_cleaned.csv')
-   
-   # Running only specific analysis functions
-   eda_selective_execution(input_file='robot_vacuums_cleaned.csv')
+   # These functions allow us to perform different types of evaluations to gain insights from the data.
+   # They are optional and not required for the main process.
+
+   # Run the full EDA pipeline with default parameters
+   eda_default_execution(input_df='robot_vacuums_cleaned.csv', save_plot=False)
+
+   # Specify custom input and output files, and a directory for plots
+   eda_custom_execution(input_df='robot_vacuums_cleaned.csv', save_plot=False)
+
+   # Run only selected analysis functions
+   eda_selective_execution(input_file='robot_vacuums_cleaned.csv', save_plot=False)  # Note: this function uses input_file, not input_df
    ```
 
 4. **Data Analysis**
@@ -78,60 +81,19 @@ The `execution.ipynb` notebook provides a step-by-step guide through the entire 
    
    # Load the cleaned CSV file
    df_cleaned = load_new(new_csv="robot_vacuums_cleaned.csv", print_i=False)
-   
+
    # Create one-hot encodings from the features
    df_onehot = onehot_encoding(df_cleaned, print_i=False)
-   
-   # Calculate the price-efficiency of the products
-   price_efficiency(df_onehot, top=5)
-   
-   # Analyze the influence of features on product ratings
+
+   # Calculate the price-efficiency of the products and return the top X products in each category
+   price_efficiency(df_onehot, top=5, price_rel=50)
+
+   # Analyze the influence of features on product ratings and display those with the lowest p-values
    feature_rating(df_onehot)
-   
-   # Price and Rating per feature ranking
+
+   # Rank features based on price and rating
    price_efficiency_features(df_onehot, print_i=True)
    ```
-
-### Option 2: Using Python Scripts
-
-1. **Web Crawling**
-   ```bash
-   python CIP_crawling.py
-   ```
-   This script will:
-   - Scrape robot vacuum data from Galaxus.ch
-   - Process the collected data
-   - Save the data to `robot_vacuums.csv`
-
-2. **Data Cleaning**
-   ```bash
-   python execute_clean_data.py
-   ```
-   This script will:
-   - Read data from `robot_vacuums.csv`
-   - Clean and process the data
-   - Save cleaned data to `robot_vacuums_cleaned.csv`
-   - Generate a report in `Vacuum robots info summary.txt`
-
-3. **Exploratory Data Analysis**
-   ```bash
-   python Vacuum_EDA.py
-   ```
-   This script will:
-   - Read the cleaned data
-   - Generate visualizations and insights
-   - Save plots to the plots directory
-   - Update the analysis report
-
-4. **Advanced Data Analysis**
-   ```bash
-   python CIP_analysis.py
-   ```
-   This script will:
-   - Perform one-hot encoding on categorical features
-   - Calculate price-efficiency metrics
-   - Analyze feature importance
-   - Generate insights on product ratings and features
 
 ## Web Crawling Process (`CIP_crawling.py`)
 The web scraping component is responsible for collecting robot vacuum data:
@@ -232,16 +194,9 @@ The analysis script performs advanced statistical analysis:
 ## Requirements
 
 - Python 3.12.7
-- `selenium` library
-- `undetected-chromedriver` library
-- `requests` library
-- `BeautifulSoup` from `bs4` library
-- `pandas` library
-- `numpy` library
-- `matplotlib` library
-- `seaborn` library
-- `lxml` library
-- `tqdm` library
+
+- for the librarys look at `requirements.txt`
+
 
 ## Installation
 
