@@ -187,3 +187,7 @@ temp_notebook/
 !requirements.txt
 !LICENSE
 !README.md
+
+# OS specific files
+.DS_Store
+.Rhistory
