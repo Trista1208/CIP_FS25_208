@@ -94,7 +94,16 @@ The `execution.ipynb` notebook provides a step-by-step guide through the entire 
 
 ### Option 2: Using Python Scripts
 
-1. **Data Cleaning**
+1. **Web Crawling**
+   ```bash
+   python CIP_crawling.py
+   ```
+   This script will:
+   - Scrape robot vacuum data from Galaxus.ch
+   - Process the collected data
+   - Save the data to `robot_vacuums.csv`
+
+2. **Data Cleaning**
    ```bash
    python execute_clean_data.py
    ```
@@ -104,13 +113,25 @@ The `execution.ipynb` notebook provides a step-by-step guide through the entire 
    - Save cleaned data to `robot_vacuums_cleaned.csv`
    - Generate a report in `Vacuum robots info summary.txt`
 
-2. **Fix Currency Issues** (if needed)
+3. **Exploratory Data Analysis**
    ```bash
-   python fix_currency_clean_data.py
+   python Vacuum_EDA.py
    ```
    This script will:
-   - Fix currency symbol issues in the data
-   - Update the report with correct currency symbols
+   - Read the cleaned data
+   - Generate visualizations and insights
+   - Save plots to the plots directory
+   - Update the analysis report
+
+4. **Advanced Data Analysis**
+   ```bash
+   python CIP_analysis.py
+   ```
+   This script will:
+   - Perform one-hot encoding on categorical features
+   - Calculate price-efficiency metrics
+   - Analyze feature importance
+   - Generate insights on product ratings and features
 
 ## Web Crawling Process (`CIP_crawling.py`)
 The web scraping component is responsible for collecting robot vacuum data:
@@ -237,19 +258,17 @@ The analysis script performs advanced statistical analysis:
 
 ## Usage
 
-1. Run the data cleaning script:
-   ```bash
-   python execute_clean_data.py
-   ```
-
-2. Generate analysis and visualizations:
-   ```bash
-   python Vacuum_EDA.py
-   ```
-
-3. For the complete workflow, use the Jupyter notebook:
+1. For the complete workflow, use the Jupyter notebook:
    ```bash
    jupyter notebook execution.ipynb
+   ```
+
+2. To run each script separately in order:
+   ```bash
+   python CIP_crawling.py           # Step 1: Web scraping
+   python execute_clean_data.py     # Step 2: Data cleaning
+   python Vacuum_EDA.py             # Step 3: Exploratory data analysis
+   python CIP_analysis.py           # Step 4: Advanced analysis
    ```
 
 ## Contributing
