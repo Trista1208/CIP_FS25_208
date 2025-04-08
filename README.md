@@ -194,9 +194,20 @@ The analysis script performs advanced statistical analysis:
 ## Requirements
 
 - Python 3.12.7
-
-- for the libraries look at `requirements.txt`
-
+- Required libraries:
+  - nbstripout
+  - selenium>=4.31.0
+  - setuptools>=65.5.1
+  - undetected_chromedriver
+  - bs4
+  - lxml>=5.3.2
+  - pandas>=2.0.0
+  - tqdm>=4.65.0
+  - ipywidgets>=8.0.0
+  - statsmodels>=0.14.0
+  - matplotlib>=3.10.1
+  - seaborn>=0.13.0
+  - jinja2>=3.1.6
 
 ## Installation
 
