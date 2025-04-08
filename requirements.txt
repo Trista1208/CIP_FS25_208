@@ -1,12 +1,12 @@
 nbstripout
-selenium
-setuptools==65.5.0
+selenium>=4.31.0
+setuptools>=78.1.0
 undetected_chromedriver
 bs4
-lxml
+lxml>=5.3.2
 pandas
 tqdm
 ipywidgets
 statsmodels
-matplotlib
+matplotlib>=3.10.1
 seaborn
