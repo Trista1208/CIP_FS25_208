@@ -4,10 +4,10 @@ setuptools>=65.5.1
 undetected_chromedriver
 bs4
 lxml>=5.3.2
-pandas
-tqdm
-ipywidgets
-statsmodels
+pandas>=2.0.0
+tqdm>=4.65.0
+ipywidgets>=8.0.0
+statsmodels>=0.14.0
 matplotlib>=3.10.1
-seaborn
+seaborn>=0.13.0
 jinja2>=3.1.6
