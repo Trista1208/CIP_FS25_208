@@ -195,7 +195,7 @@ The analysis script performs advanced statistical analysis:
 
 - Python 3.12.7
 
-- for the librarys look at `requirements.txt`
+- for the libraries look at `requirements.txt`
 
 
 ## Installation
