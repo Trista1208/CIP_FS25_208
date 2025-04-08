@@ -174,3 +174,16 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project specific
+plots/
+custom_plots/
+selective_plots/
+temp_notebook/
+*.csv
+*.txt
+
+# Keep essential files
+!requirements.txt
+!LICENSE
+!README.md
